@@ -30,7 +30,7 @@ class BinarySearchTree {
         if(value === current.value) return undefined;
 
         // if it is less,
-        // check ot see if there is a node to the left
+        // check to see if there is a node to the left
         // if there is, move to that node and repeat these steps
         // if there is not, add the new node as the right property
         if(value < current.value) {
@@ -62,16 +62,42 @@ class BinarySearchTree {
     // check if there is a root, if not, search is done
     // if there is a root, check if the value of the new node is the value we are looking for, if found, search is done
     // if not, check to see if the value is greater than or less than the value of the root
+    if(this.root === null) return false;
 
-    // if it is greater,
-    // check to see if there is a node to the right
-    // if there is, move to that node and repeat these steps
-    // if there is not, search is done
+    if(value === this.root.value) {
+      return true;
+    } else {
+      let current = this.root;
 
-    // if it is less,
-    // check to see if there is a node to the left
-    // if there is, move to that node and repeat these steps
-    // if there is not, search is done
+      while (true) {
+        // if the current value matches the value being searched, a match has been found
+        if(value === current.value) return true;
+
+        // if it is less,
+        // check to see if there is a node to the left
+        // if there is not, search is done
+        // if there is, move to that node and repeat these steps
+        if(value < current.value) {
+          if(current.left === null) {
+            return false;
+          } else {
+            current = current.left;
+          }
+        }
+
+        // if it is greater,
+        // check to see if there is a node to the right
+        // if there is not, search is done
+        // if there is, move to that node and repeat these steps
+        else if(value > current.value) {
+          if(current.right === null) {
+            return false;
+          } else {
+            current = current.right;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -83,4 +109,5 @@ tree.insert(12);
 tree.insert(11);
 tree.insert(15);
 tree.insert(9);
-console.log(tree)
+console.log(tree.find(15)) // true
+console.log(tree.find(100)) // false
