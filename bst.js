@@ -56,6 +56,23 @@ class BinarySearchTree {
       }
     }
   }
+
+  find(value) {
+    // start at root
+    // check if there is a root, if not, search is done
+    // if there is a root, check if the value of the new node is the value we are looking for, if found, search is done
+    // if not, check to see if the value is greater than or less than the value of the root
+
+    // if it is greater,
+    // check to see if there is a node to the right
+    // if there is, move to that node and repeat these steps
+    // if there is not, search is done
+
+    // if it is less,
+    // check to see if there is a node to the left
+    // if there is, move to that node and repeat these steps
+    // if there is not, search is done
+  }
 }
 
 let tree = new BinarySearchTree();
