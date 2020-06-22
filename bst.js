@@ -132,6 +132,27 @@ class BinarySearchTree {
     // return the array of visited node values
     return visited;
   }
+
+  DFSPreOrder() {
+    // ***** RECURSIVE *****
+    // Create variable to store the values of visited nodes
+    // Store the root of the BST in a variable
+    let visited = [],
+        current = this.root;
+
+    // Write a helper function which accepts a node:
+    // Push the value of the node to the 'visited' array
+    // If the node has a left property, call the helper function with the left property on the node
+    // If the node has a right property call the helper function with the right property on the node
+    function helper(node) {
+
+    }
+
+    // Invoke the helper function with the 'current' variable
+
+    // Return the 'visited array
+    return visited;
+  }
 }
 
 let tree = new BinarySearchTree();
