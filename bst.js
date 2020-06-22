@@ -99,6 +99,38 @@ class BinarySearchTree {
       }
     }
   }
+
+  BFS() {
+    // ***** ITERATIVE *****
+    // create a queue (will be using an array in this case)
+    // create a variable that will store the values of nodes visited
+    let queue = [];
+    let visited = [];
+
+    // place the root node into the queue
+    queue.push(tree.root);
+
+    // Loop as long as there is anything in the queue:
+    // Dequeue a node from the queue and push the value of that dequeued node into the variable that stores the value of nodes visited
+    // If there is a left property on the node that was dequeued, add the left property's node to the queue
+    // If there is a right property on the node that was dequeued, add the right property's node to the queue
+    while(queue.length > 0) {
+      let current = queue.shift();
+      
+      visited.push(current.value);
+
+      if(current.left !== null) {
+        queue.push(current.left);
+      }
+
+      if(current.right !== null) {
+        queue.push(current.right);
+      }
+    }
+
+    // return the array of visited node values
+    return visited;
+  }
 }
 
 let tree = new BinarySearchTree();
@@ -109,5 +141,4 @@ tree.insert(12);
 tree.insert(11);
 tree.insert(15);
 tree.insert(9);
-console.log(tree.find(15)) // true
-console.log(tree.find(100)) // false
+console.log(tree.BFS());
