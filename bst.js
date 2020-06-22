@@ -144,11 +144,20 @@ class BinarySearchTree {
     // Push the value of the node to the 'visited' array
     // If the node has a left property, call the helper function with the left property on the node
     // If the node has a right property call the helper function with the right property on the node
-    function helper(node) {
+    function traverse(node) {
+      visited.push(node.value);
 
+      if(node.left) {
+        traverse(node.left);
+      }
+
+      if(node.right) {
+        traverse(node.right);
+      }
     }
 
     // Invoke the helper function with the 'current' variable
+    traverse(current);
 
     // Return the 'visited array
     return visited;
@@ -164,3 +173,4 @@ tree.insert(11);
 tree.insert(15);
 tree.insert(9);
 console.log(tree.BFS());
+console.log(tree.DFSPreOrder());
