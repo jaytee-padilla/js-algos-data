@@ -42,6 +42,21 @@ class MaxBinaryHeap {
     // The child index that was swapped now become the new parent index
     // Keep looping and swapping until neither child is larger than the element
     // Return the old root
+    const max = this.values[0];
+    const end = this.values.pop();
+    this.values[0] = end;
+
+    // bubble down
+    let index = 0;
+    const length = this.values.length;
+    const element = this.values[0];
+
+    while(true) {
+      let leftChildIdx = 2 * index + 1;
+      let rightChildIdx = 2 * index + 2;
+    }
+
+    return max;
   }
 }
 
