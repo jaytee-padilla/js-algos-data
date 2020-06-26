@@ -1,5 +1,5 @@
 class HashTable {
-  constructor(size = 53) {
+  constructor(size=53) {
     // creates a class property called "keyMap" and stores an array with a set amount of slots (in this case, the default size of the array will be 53 slots)
     this.keyMap = new Array(size);
   }
@@ -19,8 +19,28 @@ class HashTable {
       total = (total * PRIM_NUM + value) % this.keyMap.length;
     }
 
+		// Returns the index of the hashed key
     return total;
-  }
+	}
+
+	set(key, value) {
+		// Hashes the key
+		let index = this._hash(key);
+
+		// If the current index of the hash table is empty, create an empty array at that index (i.e. separate chaining)
+		if (!this.keyMap[index]) {
+			this.keyMap[index] = [];
+		}
+		// Store the key/value parameters in an array at the index within the hash table (e.g. [ , , , [[key, value]], , ,])
+		// If another key/value pair is assigned the same index when hashed, that key/value pair will be pushed into the parent index (e.g. [ , , , [[key, value], [key, value]], , ,])
+		this.keyMap[index].push([key, value]);
+
+		// Stores the key-value pair in the hash table array via separate chaining
+	}
 }
 
-hash("yuh", 20);
+let hashTable = new HashTable();
+hashTable.set("name", "jaytee");
+hashTable.set("name", "jaytee");
+hashTable.set("Name", "Naaz");
+console.log(hashTable);
